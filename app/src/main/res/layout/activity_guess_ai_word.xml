@@ -39,7 +39,7 @@
 
     <Button
         android:id="@+id/btn_random_word"
-        android:layout_width="225dp"
+        android:layout_width="250dp"
         android:layout_height="65dp"
         android:layout_marginTop="48dp"
         android:background="@color/colorPrimary"
@@ -51,7 +51,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/game_title_guess_ai" />
 
@@ -59,6 +59,7 @@
         android:id="@+id/btn_strikes_remaining"
         android:layout_width="wrap_content"
         android:layout_height="65dp"
+        android:layout_marginTop="48dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
         android:fontFamily="sans-serif-medium"
@@ -67,6 +68,8 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="289dp"
-        tools:layout_editor_absoluteY="214dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toEndOf="@+id/btn_random_word"
+        app:layout_constraintTop_toBottomOf="@+id/game_title_guess_ai" />
 </androidx.constraintlayout.widget.ConstraintLayout>
