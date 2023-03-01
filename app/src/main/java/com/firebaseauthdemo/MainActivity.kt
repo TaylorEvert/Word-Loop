@@ -11,7 +11,6 @@ import com.google.firebase.database.DatabaseReference
 class MainActivity : AppCompatActivity() {
 
     // Declare MainActivity Views
-    lateinit var user_id: TextView
     lateinit var email_id: TextView
 
     // Declare buttons
@@ -52,11 +51,9 @@ class MainActivity : AppCompatActivity() {
         val emailId = intent.getStringExtra("email_id")
 
         // Assign MainActivity View variables
-        user_id = findViewById(R.id.text_user_id)
         email_id = findViewById(R.id.text_user_email)
         // Update screen with user information
-        user_id.text = "ID: $userId"
-        email_id.text = "Email: $emailId"
+        email_id.text = "$emailId"
 
         /**
          *  Setup logout button -
