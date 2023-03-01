@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackgroundMain"
+    tools:context=".guessAiWordActivity">
+
+    <ImageView
+        android:id="@+id/game_logo_guess_ai"
+        android:layout_width="373dp"
+        android:layout_height="121dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_action_name" />
+
+    <TextView
+        android:id="@+id/game_title_guess_ai"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:background="#9294A1"
+        android:fontFamily="@font/atomic_age"
+        android:text="@string/game_title"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#4E31B7"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game_logo_guess_ai"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_random_word"
+        android:layout_width="225dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="48dp"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:text="long word"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game_title_guess_ai" />
+
+    <Button
+        android:id="@+id/btn_strikes_remaining"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:text="5"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="289dp"
+        tools:layout_editor_absoluteY="214dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

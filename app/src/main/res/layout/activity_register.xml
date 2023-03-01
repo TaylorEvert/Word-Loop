@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#9294A1"
+    tools:context=".RegisterActivity">
+
+    <ImageView
+        android:id="@+id/game_logo_register"
+        android:layout_width="407dp"
+        android:layout_height="189dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_action_name" />
+
+    <TextView
+        android:id="@+id/game_title_register"
+        android:layout_width="405dp"
+        android:layout_height="45dp"
+        android:background="#9294A1"
+        android:fontFamily="@font/atomic_age"
+        android:text="@string/game_title"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#4E31B7"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game_logo_register"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/register_screen_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Registration"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/til_register_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game_title_register" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_register_email"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="#4E31B7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game_title_register"
+        app:layout_constraintVertical_bias="0.17000002">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryBackgroundMain"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Email"
+            android:textAlignment="viewStart"
+            android:textColor="#4E31B7"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_register_password"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_register_email"
+        app:layout_constraintVertical_bias="0.13">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryBackgroundMain"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Password"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_register_user"
+        android:layout_width="375dp"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:text="Register"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_register_password"
+        app:layout_constraintVertical_bias="0.26999998" />
+
+    <Button
+        android:id="@+id/btn_return_login"
+        android:layout_width="375dp"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:text="Return"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register_user"
+        app:layout_constraintVertical_bias="0.42000002" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
