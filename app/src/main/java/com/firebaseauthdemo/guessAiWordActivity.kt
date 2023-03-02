@@ -26,15 +26,11 @@ class guessAiWordActivity : AppCompatActivity() {
     // Declare activity view variables
     lateinit var view_word: Button
     lateinit var view_strike: Button
-    lateinit var hidden: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guess_ai_word)
 
         getRandomWord()
-        view_word = findViewById(R.id.btn_random_word)
-        hidden = findViewById(R.id.hidden_word)
-        view_word.text = hidden.text
 
     }
 
@@ -53,8 +49,8 @@ class guessAiWordActivity : AppCompatActivity() {
 
             // Grab response from API - return to main activity if an error occurs
             if (response.isSuccessful && response.body() != null) {
-                hidden = findViewById(R.id.hidden_word)
-                hidden.text = response.body()!!.word
+                view_word = findViewById(R.id.btn_random_word)
+                view_word.text = response.body()!!.word
             } else {
                 Toast.makeText(
                     this@guessAiWordActivity,

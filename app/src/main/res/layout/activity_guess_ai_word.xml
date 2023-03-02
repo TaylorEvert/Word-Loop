@@ -41,7 +41,6 @@
         android:id="@+id/view_guess_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-medium"
         android:text="Guess the word"
         android:textAlignment="center"
@@ -49,544 +48,535 @@
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_strikes_remaining"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_title_guess_ai"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btn_strikes_remaining"
-        android:layout_width="350dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="38dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="Strikes - 5"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/game_title_guess_ai" />
 
-    <Button
-        android:id="@+id/btn_guesses"
+    <LinearLayout
+        android:id="@+id/linearLayout_gameView"
         android:layout_width="350dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="6dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="Guesses - "
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_random_word"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_strikes_remaining"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintTop_toBottomOf="@+id/view_guess_title">
 
-    <Button
-        android:id="@+id/btn_random_word"
-        android:layout_width="350dp"
-        android:layout_height="75dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="long word"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        <Button
+            android:id="@+id/btn_strikes_remaining"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="Strikes - 5"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_guesses"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="Guesses - "
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_random_word"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="long word"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_columne_one"
+        android:layout_width="50dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/between_keyboard"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/btn_press_a"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="a"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btm_press_g"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="g"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_m"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="m"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_s"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="s"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_y"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="y"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_column_two"
+        android:layout_width="50dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_columne_one"
+        app:layout_constraintTop_toBottomOf="@+id/between_keyboard"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/btn_press_b"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="b"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_h"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="h"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_n"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="n"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_t"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="t"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_z"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="z"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_column_three"
+        android:layout_width="50dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_column_two"
+        app:layout_constraintTop_toBottomOf="@+id/between_keyboard"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/btn_press_c"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="c"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_i"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="i"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_o"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="o"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_u"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="u"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_column_four"
+        android:layout_width="50dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_column_three"
+        app:layout_constraintTop_toBottomOf="@+id/between_keyboard"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/btn_press_d"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="d"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_j"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="j"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_p"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="p"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_v"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="v"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_column_five"
+        android:layout_width="50dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_column_four"
+        app:layout_constraintTop_toBottomOf="@+id/between_keyboard"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/btn_press_e"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="e"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_k"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="k"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_q"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="q"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_w"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="w"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_column_six"
+        android:layout_width="50dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_column_five"
+        app:layout_constraintTop_toBottomOf="@+id/between_keyboard"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/btn_press_f"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="f"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_l"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="l"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_r"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="r"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_press_x"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:text="x"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/between_keyboard"
+        android:layout_width="400dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_gameView" />
+
+    <Space
+        android:id="@+id/between_right"
+        android:layout_width="16dp"
+        android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_strikes_remaining"
-        app:layout_constraintVertical_bias="0.18" />
-
-    <Button
-        android:id="@+id/btn_press_a"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="a"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_random_word" />
-
-    <Button
-        android:id="@+id/btn_press_b"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="b"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_a"
-        app:layout_constraintTop_toBottomOf="@+id/btn_random_word" />
-
-    <Button
-        android:id="@+id/btn_press_c"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="c"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_b"
-        app:layout_constraintTop_toBottomOf="@+id/btn_random_word" />
-
-    <Button
-        android:id="@+id/btn_press_d"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="d"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_c"
-        app:layout_constraintTop_toBottomOf="@+id/btn_random_word" />
-
-    <Button
-        android:id="@+id/btn_press_e"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="e"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_d"
-        app:layout_constraintTop_toBottomOf="@+id/btn_random_word" />
-
-    <Button
-        android:id="@+id/btn_press_f"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="f"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_e"
-        app:layout_constraintTop_toBottomOf="@+id/btn_random_word" />
-
-    <Button
-        android:id="@+id/btn_press_g"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="g"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_a" />
-
-    <Button
-        android:id="@+id/btn_press_h"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="h"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_g"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_b" />
-
-    <Button
-        android:id="@+id/btn_press_i"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="i"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_h"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_c" />
-
-    <Button
-        android:id="@+id/btn_press_j"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="j"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_i"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_d" />
-
-    <Button
-        android:id="@+id/btn_press_k"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="k"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_j"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_e" />
-
-    <Button
-        android:id="@+id/btn_press_l"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="l"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_k"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_f" />
-
-    <Button
-        android:id="@+id/btn_press_m"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="m"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_g" />
-
-    <Button
-        android:id="@+id/btn_press_n"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="n"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_m"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_h" />
-
-    <Button
-        android:id="@+id/btn_press_o"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="o"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_n"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_i" />
-
-    <Button
-        android:id="@+id/btn_press_p"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="p"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_o"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_j" />
-
-    <Button
-        android:id="@+id/btn_press_q"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="q"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_p"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_k" />
-
-    <Button
-        android:id="@+id/btn_press_r"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="r"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_q"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_l" />
-
-    <Button
-        android:id="@+id/btn_press_s"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="s"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_m" />
-
-    <Button
-        android:id="@+id/btn_press_t"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="t"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_s"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_n" />
-
-    <Button
-        android:id="@+id/btn_press_u"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="u"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_t"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_o" />
-
-    <Button
-        android:id="@+id/btn_press_v"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="v"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_u"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_p" />
-
-    <Button
-        android:id="@+id/btn_press_w"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="w"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_v"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_q" />
-
-    <Button
-        android:id="@+id/btn_press_x"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="x"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_w"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_r" />
-
-    <Button
-        android:id="@+id/btn_press_y"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="y"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_s" />
-
-    <Button
-        android:id="@+id/btn_press_z"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:text="z"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_y"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_t" />
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_column_six"
+        app:layout_constraintTop_toBottomOf="@+id/between_keyboard"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_next"
         android:layout_width="248dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="4dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
         android:fontFamily="sans-serif-medium"
-        android:text="next"
+        android:text="Next"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_press_z"
-        app:layout_constraintTop_toBottomOf="@+id/btn_press_v" />
-
-    <TextView
-        android:id="@+id/hidden_word"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="43dp"
-        android:text="hidden"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/btn_strikes_remaining"
-        app:layout_constraintEnd_toStartOf="@+id/game_title_guess_ai"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_logo_guess_ai" />
+        app:layout_constraintStart_toEndOf="@+id/linearLayout_column_two" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
