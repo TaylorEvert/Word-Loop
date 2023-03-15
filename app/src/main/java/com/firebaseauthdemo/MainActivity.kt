@@ -12,8 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.firebaseauthdemo.randomword.RandomWordInterface
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         /**
          * Enable Play button -
-         * Send user to guessAiWord Activity
+         * Send user to guessAiWord Activity with the random word from API
          */
 
         // Assign play button id
@@ -43,9 +49,8 @@ class MainActivity : AppCompatActivity() {
         // Set listener - send user to guessAiWord Activity - start of game
         play.setOnClickListener {
 
-            startActivity(Intent(this@MainActivity, guessAiWordActivity::class.java))
-            finish()
-
+            // This function calls the RandomWord API - send user to first section of game with the random word
+            getRandomWord()
         }
 
         /**
@@ -83,6 +88,43 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
 
+    // This function contacts the random word api - after grabbing a random word, it sends the user to the next activity with the word
+    private fun getRandomWord(){
+        lifecycleScope.launch {
+            // Create retrofit simpleton
+            val retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val wordApi = retrofit.create(RandomWordInterface::class.java)
+            val response = wordApi.getWord()
+
+            // Grab response from API - return to main activity if an error occurs
+            if (response.isSuccessful && response.body() != null) {
+                var word = response.body()!!.word
+                Toast.makeText(
+                    this@MainActivity,
+                    word,
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                val intent = Intent(this@MainActivity, guessAiWordActivity::class.java)
+                // Clear background activities
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.putExtra("word", word)
+                startActivity(intent)
+                finish()
+
+            } else {
+                Toast.makeText(
+                    this@MainActivity,
+                    "An error has occurred",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 }

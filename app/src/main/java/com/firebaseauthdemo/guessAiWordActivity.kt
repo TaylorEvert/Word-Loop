@@ -11,21 +11,10 @@ package com.firebaseauthdemo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.LifecycleCoroutineScope
-import androidx.lifecycle.lifecycleScope
-import com.firebaseauthdemo.randomword.RandomWordData
-import com.firebaseauthdemo.randomword.RandomWordInterface
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import org.w3c.dom.Text
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 // API URL
 const val BASE_URL = "https://api.api-ninjas.com/v1/"
@@ -69,14 +58,14 @@ class guessAiWordActivity : AppCompatActivity() {
 
     // Win/Loss Value - 0 = placeholder - 1 = Win - 2 = Loss
     var winLoss = 0
-    // API given word
-    var word: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guess_ai_word)
 
-        getRandomWord()
+        // Word sent from previous activity - Given from API
+        val sendWord = intent.getStringExtra("word")
+        val word = sendWord.toString()
 
         // List of the word to be guessed - add each letter of word to list
         var wordList = mutableListOf<String>()
@@ -816,40 +805,6 @@ class guessAiWordActivity : AppCompatActivity() {
             btn_z = findViewById(R.id.btn_press_z)
             btn_z.isEnabled = false
             btn_z.isClickable = false
-        }
-
-    }
-
-    // Uses retrofit to create api instance, grabs a random word
-    private fun getRandomWord() {
-        lifecycleScope.launch {
-            // Create retrofit simpleton
-            val retrofit = Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            val wordApi = retrofit.create(RandomWordInterface::class.java)
-            val response = wordApi.getWord()
-
-            // Grab response from API - return to main activity if an error occurs
-            if (response.isSuccessful && response.body() != null) {
-                Toast.makeText(
-                    this@guessAiWordActivity,
-                    response.body()!!.word,
-                    Toast.LENGTH_SHORT
-                ).show()
-                word = response.body()!!.word
-            } else {
-                Toast.makeText(
-                    this@guessAiWordActivity,
-                    "An error has occurred",
-                    Toast.LENGTH_SHORT
-                ).show()
-                startActivity(Intent(this@guessAiWordActivity, MainActivity::class.java))
-                finish()
-            }
-
         }
     }
 }
