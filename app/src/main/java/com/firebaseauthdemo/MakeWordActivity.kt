@@ -8,10 +8,18 @@ package com.firebaseauthdemo
  *  - Correctly submitting a word allows access to the next round in the game loop (Ai guesses the word)
  */
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.firebaseauthdemo.validword.ValidWordInterface
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 class MakeWordActivity : AppCompatActivity() {
 
@@ -39,6 +47,7 @@ class MakeWordActivity : AppCompatActivity() {
     // Letters currently in play
     var currentLetters = mutableListOf<String>()
     // Set value decides if word is valid or not - 0 is a placeholder - 1 is a valid word - 2 is an invalid word
+    var validWord = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -181,6 +190,39 @@ class MakeWordActivity : AppCompatActivity() {
             tile10.isClickable = true
         }
 
+        // Submit button functionality - validates user created word
+        submit = findViewById(R.id.btn_submit_word)
+        submit.setOnClickListener {
+            // Cast currentLetters into a string - to be passed to API for validation
+            var word: String = ""
+            for (x in currentLetters) {
+                word += x
+            }
+            // Send word to API
+            validWord(word)
+            // Determine word validity - update accordingly
+            // Word is valid
+            if (validWord == 1) {
+                title = findViewById(R.id.view_make_word)
+                title.text = "Valid Word"
+                Toast.makeText(
+                    this@MakeWordActivity,
+                    "Valid Word!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            // Word is invalid
+            if (validWord == 2) {
+                title = findViewById(R.id.view_make_word)
+                title.text = "Invalid Word"
+                Toast.makeText(
+                    this@MakeWordActivity,
+                    "Invalid Word!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
     }
 
     // Updates the users word visually each time a letter is put into play
@@ -257,5 +299,52 @@ class MakeWordActivity : AppCompatActivity() {
         tile10 = findViewById(R.id.btn_tile_10)
         tile10.text = playerHand[9]
 
+    }
+
+    // Contacts a dictionary API to validate if the users word is a word or not
+    private fun validWord(word: String) {
+        lifecycleScope.launch {
+            // Create retrofit simpleton
+            val retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val validApi = retrofit.create(ValidWordInterface::class.java)
+            val response = validApi.validWord(word)
+
+            // Grab response from API - return to main activity if an error occurs
+            // Update validWord value upon successful response
+            if (response.isSuccessful) {
+                // If the user created word is valid - update validWord variable with 1
+                if (response.body()?.valid == true) {
+                    validWord = 1
+                }
+                // If the user created word is invalid - update validWord variable with 2
+                else if (response.body()?.valid == false) {
+                    validWord = 2
+                }
+                // If neither responses are true - show error message and return to main menu
+                else {
+                    Toast.makeText(
+                        this@MakeWordActivity,
+                        "An error has occurred while validating",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    startActivity(Intent(this@MakeWordActivity, MainActivity::class.java))
+                    finish()
+                }
+
+            } else {
+                // If API response is unsuccessful - show error message and return to main menu
+                Toast.makeText(
+                    this@MakeWordActivity,
+                    "An error has occurred while contacting API",
+                    Toast.LENGTH_SHORT
+                ).show()
+                startActivity(Intent(this@MakeWordActivity, MainActivity::class.java))
+                finish()
+            }
+        }
     }
 }

@@ -69,15 +69,15 @@ class guessAiWordActivity : AppCompatActivity() {
 
     // Win/Loss Value - 0 = placeholder - 1 = Win - 2 = Loss
     var winLoss = 0
+    // API given word
+    var word: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guess_ai_word)
 
-        //getRandomWord()
+        getRandomWord()
 
-        // Blank word for testing
-        var word = "blank"
         // List of the word to be guessed - add each letter of word to list
         var wordList = mutableListOf<String>()
         for (x in word) {
@@ -822,7 +822,6 @@ class guessAiWordActivity : AppCompatActivity() {
 
     // Uses retrofit to create api instance, grabs a random word
     private fun getRandomWord() {
-
         lifecycleScope.launch {
             // Create retrofit simpleton
             val retrofit = Retrofit.Builder()
@@ -840,6 +839,7 @@ class guessAiWordActivity : AppCompatActivity() {
                     response.body()!!.word,
                     Toast.LENGTH_SHORT
                 ).show()
+                word = response.body()!!.word
             } else {
                 Toast.makeText(
                     this@guessAiWordActivity,
