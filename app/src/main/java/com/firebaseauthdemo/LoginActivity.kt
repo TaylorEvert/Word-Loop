@@ -1,5 +1,12 @@
 package com.firebaseauthdemo
 
+/**
+ * First screen the user has access to upon opening the app
+ *  - Provides link to registration screen
+ *  - Provides login availability upon entering correct credentials
+ *  - Two routes - Either takes user to main menu, or takes user to registration
+ */
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

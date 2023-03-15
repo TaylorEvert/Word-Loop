@@ -1,5 +1,12 @@
 package com.firebaseauthdemo
 
+/**
+ * Main Menu - Provides visuals and routes to different functions
+ *  - Displays game logo, game title, user information, and user game statistics
+ *  - Provides play button - route to start the game at round one
+ *  - Provides logout button - logout user and return to login screen
+ */
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

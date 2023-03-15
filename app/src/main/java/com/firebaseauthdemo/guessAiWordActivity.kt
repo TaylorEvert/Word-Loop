@@ -1,5 +1,13 @@
 package com.firebaseauthdemo
 
+/**
+ * Game starts with round 1 - Guess a word provided by "Ai" (Random Word Generator API)
+ *  - User continually guesses random letters in an attempt to guess the random word correctly
+ *  - User is allowed 5 strikes when guessing, passing 5 ends the game with a loss and provides an option to return to the main screen
+ *  - Correctly guessing the word provides the user with the option to continue to the next round
+ *  - Upon win/loss, all buttons are disabled to prevent game continuation
+ */
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -628,7 +636,8 @@ class guessAiWordActivity : AppCompatActivity() {
             }
             // Move to next activity upon winning
             if (winLoss == 1) {
-                // TODO: Move to next activity 
+                startActivity(Intent(this@guessAiWordActivity, MakeWordActivity::class.java))
+                finish()
             }
         }
 

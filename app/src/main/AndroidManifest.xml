@@ -14,6 +14,9 @@
         android:theme="@style/Theme.FirebaseAuthDemo"
         tools:targetApi="31">
         <activity
+            android:name=".MakeWordActivity"
+            android:exported="false" />
+        <activity
             android:name=".guessAiWordActivity"
             android:exported="false" />
         <activity
