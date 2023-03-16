@@ -190,6 +190,7 @@ class MakeWordActivity : AppCompatActivity() {
             tile10.isClickable = true
         }
 
+        // TODO - add already guessed check to reduce api calls
         // Submit button functionality - validates user created word
         submit = findViewById(R.id.btn_submit_word)
         submit.setOnClickListener {
