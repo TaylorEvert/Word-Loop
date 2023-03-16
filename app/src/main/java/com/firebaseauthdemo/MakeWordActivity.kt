@@ -210,6 +210,14 @@ class MakeWordActivity : AppCompatActivity() {
                     "Valid Word!",
                     Toast.LENGTH_SHORT
                 ).show()
+                // Send word to next activity - for AI to guess
+                val intent = Intent(this@MakeWordActivity, guessUserWordActivity::class.java)
+                // Clear background activities
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.putExtra("word", word)
+                startActivity(intent)
+                finish()
+
             }
             // Word is invalid
             if (validWord == 2) {
