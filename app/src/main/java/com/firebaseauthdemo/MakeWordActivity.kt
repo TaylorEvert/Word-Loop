@@ -48,6 +48,8 @@ class MakeWordActivity : AppCompatActivity() {
     var currentLetters = mutableListOf<String>()
     // Set value decides if word is valid or not - 0 is a placeholder - 1 is a valid word - 2 is an invalid word
     var validWord = 0
+    // List of invalid words already made by the user
+    var invalidWords = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -190,7 +192,6 @@ class MakeWordActivity : AppCompatActivity() {
             tile10.isClickable = true
         }
 
-        // TODO - add already guessed check to reduce api calls
         // Submit button functionality - validates user created word
         submit = findViewById(R.id.btn_submit_word)
         submit.setOnClickListener {
@@ -199,36 +200,49 @@ class MakeWordActivity : AppCompatActivity() {
             for (x in currentLetters) {
                 word += x
             }
-            // Send word to API
-            validWord(word)
-            // Determine word validity - update accordingly
-            // Word is valid
-            if (validWord == 1) {
-                title = findViewById(R.id.view_make_word)
-                title.text = "Valid Word"
-                Toast.makeText(
-                    this@MakeWordActivity,
-                    "Valid Word!",
-                    Toast.LENGTH_SHORT
-                ).show()
-                // Send word to next activity - for AI to guess
-                val intent = Intent(this@MakeWordActivity, guessUserWordActivity::class.java)
-                // Clear background activities
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                intent.putExtra("word", word)
-                startActivity(intent)
-                finish()
 
-            }
-            // Word is invalid
-            if (validWord == 2) {
-                title = findViewById(R.id.view_make_word)
-                title.text = "Invalid Word"
+            // Check if user made word was already checked
+            if (invalidWords.contains(word)) {
+
                 Toast.makeText(
                     this@MakeWordActivity,
-                    "Invalid Word!",
+                    "This word is invalid!",
                     Toast.LENGTH_SHORT
                 ).show()
+
+            } else {
+                // Send word to API
+                validWord(word)
+                // Determine word validity - update accordingly
+                // Word is valid
+                if (validWord == 1) {
+                    title = findViewById(R.id.view_make_word)
+                    title.text = "Valid Word"
+                    Toast.makeText(
+                        this@MakeWordActivity,
+                        "Valid Word!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    // Send word to next activity - for AI to guess
+                    val intent = Intent(this@MakeWordActivity, guessUserWordActivity::class.java)
+                    // Clear background activities
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.putExtra("word", word)
+                    startActivity(intent)
+                    finish()
+
+                }
+                // Word is invalid
+                if (validWord == 2) {
+                    title = findViewById(R.id.view_make_word)
+                    title.text = "Invalid Word"
+                    Toast.makeText(
+                        this@MakeWordActivity,
+                        "Invalid Word!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    invalidWords.add(word)
+                }
             }
         }
 
@@ -250,9 +264,9 @@ class MakeWordActivity : AppCompatActivity() {
         // Variable is filled with random letters, set as players hand
         var playerHand = mutableListOf<String>()
         // List of letters and vowels to fill playerHand
-        val letters = listOf('b','c','d','f','g','h','j','k','l','m','n','p','q','r',
-            's','t','v','w','x','z')
-        val vowels = listOf('a','e','i','o','u','y')
+        val letters = listOf('b','c','d','d','f','g','h','h','j','k','l','l','m','n','n','p','q','r','r',
+            's','s','t','t','v','w','x','z')
+        val vowels = listOf('a','e','e','i','o','u','y')
 
         // Determines how many vowels are in play - allows every hand to have 3 vowels
         var containVowel = 0
@@ -260,10 +274,6 @@ class MakeWordActivity : AppCompatActivity() {
         while (playerHand.size < 10) {
             // Grabs random letter from letters list
             var currentRandomLetter = letters.random().toString()
-            // If player hand already contains the random letter, loop until it is unique
-            while(playerHand.contains(currentRandomLetter)) {
-                currentRandomLetter = letters.random().toString()
-            }
             // Prioritizes adding a random vowel over a random non-vowel letter - making sure at least 3 vowels are in play
             if (containVowel == 2) {
                 // Reset vowel counter so other letters can be added as well
