@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     // Declare buttons
     lateinit var logout: Button
     lateinit var play: Button
+    lateinit var tutorial: Button
 
     // Declare Database Reference variable
     private lateinit var dbRef: DatabaseReference
@@ -86,6 +87,22 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity, LoginActivity::class.java))
             finish()
 
+        }
+
+
+        /**
+         *  Setup tutorial button -
+         *  Sends user to tutorial page
+         *  Allows user to return back to home page
+         */
+
+        // Enable tutorial button - send to tutorial screen
+        // Assign id ot tutorial button
+        tutorial = findViewById(R.id.btn_tutorial)
+        // OnClickListener for tutorial
+        tutorial.setOnClickListener {
+            startActivity(Intent(this@MainActivity, tutorialActivity::class.java))
+            finish()
         }
 
     }
