@@ -232,6 +232,7 @@ class guessUserWordActivity : AppCompatActivity() {
                 break
             }
 
+
         }
         // Set winloss to 2(ai lost) if ran out of lives and guessed incorrectly again
         if (strikes <= 0) {

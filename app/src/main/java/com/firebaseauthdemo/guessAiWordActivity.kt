@@ -98,7 +98,7 @@ class guessAiWordActivity : AppCompatActivity() {
 
 
         // Activate buttons
-        // Start with next action button invisible
+        // Start with next button disabled
         btn_next = findViewById(R.id.btn_next)
         btn_next.visibility = View.INVISIBLE
 
@@ -701,110 +701,117 @@ class guessAiWordActivity : AppCompatActivity() {
         // Remove all letters - prevents users from breaking the game by continuing to play
         // Go through each button, disable button functionality
         if (winLoss == 1 || winLoss == 2) {
-
-            btn_a = findViewById(R.id.btn_press_a)
-            btn_a.isEnabled = false
-            btn_a.isClickable = false
-
-            btn_b = findViewById(R.id.btn_press_b)
-            btn_b.isEnabled = false
-            btn_b.isClickable = false
-
-            btn_c = findViewById(R.id.btn_press_c)
-            btn_c.isEnabled = false
-            btn_c.isClickable = false
-
-            btn_d = findViewById(R.id.btn_press_d)
-            btn_d.isEnabled = false
-            btn_d.isClickable = false
-
-            btn_e = findViewById(R.id.btn_press_e)
-            btn_e.isEnabled = false
-            btn_e.isClickable = false
-
-            btn_f = findViewById(R.id.btn_press_f)
-            btn_f.isEnabled = false
-            btn_f.isClickable = false
-
-            btn_g = findViewById(R.id.btn_press_g)
-            btn_g.isEnabled = false
-            btn_g.isClickable = false
-
-            btn_h = findViewById(R.id.btn_press_h)
-            btn_h.isEnabled = false
-            btn_h.isClickable = false
-
-            btn_i = findViewById(R.id.btn_press_i)
-            btn_i.isEnabled = false
-            btn_i.isClickable = false
-
-            btn_j = findViewById(R.id.btn_press_j)
-            btn_j.isEnabled = false
-            btn_j.isClickable = false
-
-            btn_k = findViewById(R.id.btn_press_k)
-            btn_k.isEnabled = false
-            btn_k.isClickable = false
-
-            btn_l = findViewById(R.id.btn_press_l)
-            btn_l.isEnabled = false
-            btn_l.isClickable = false
-
-            btn_m = findViewById(R.id.btn_press_m)
-            btn_m.isEnabled = false
-            btn_m.isClickable = false
-
-            btn_n = findViewById(R.id.btn_press_n)
-            btn_n.isEnabled = false
-            btn_n.isClickable = false
-
-            btn_o = findViewById(R.id.btn_press_o)
-            btn_o.isEnabled = false
-            btn_o.isClickable = false
-
-            btn_p = findViewById(R.id.btn_press_p)
-            btn_p.isEnabled = false
-            btn_p.isClickable = false
-
-            btn_q = findViewById(R.id.btn_press_q)
-            btn_q.isEnabled = false
-            btn_q.isClickable = false
-
-            btn_r = findViewById(R.id.btn_press_r)
-            btn_r.isEnabled = false
-            btn_r.isClickable = false
-
-            btn_s = findViewById(R.id.btn_press_s)
-            btn_s.isEnabled = false
-            btn_s.isClickable = false
-
-            btn_t = findViewById(R.id.btn_press_t)
-            btn_t.isEnabled = false
-            btn_t.isClickable = false
-
-            btn_u = findViewById(R.id.btn_press_u)
-            btn_u.isEnabled = false
-            btn_u.isClickable = false
-
-            btn_v = findViewById(R.id.btn_press_v)
-            btn_v.isEnabled = false
-            btn_v.isClickable = false
-
-            btn_w = findViewById(R.id.btn_press_w)
-            btn_w.isEnabled = false
-            btn_w.isClickable = false
-
-            btn_x = findViewById(R.id.btn_press_x)
-            btn_x.isEnabled = false
-            btn_x.isClickable = false
-
-            btn_y = findViewById(R.id.btn_press_y)
-            btn_y.isEnabled = false
-            btn_y.isClickable = false
-
-            btn_z = findViewById(R.id.btn_press_z)
-            btn_z.isEnabled = false
-            btn_z.isClickable = false
+            disableButtons()
         }
     }
+
+    // Disables all letter buttons on screen
+    private fun disableButtons() {
+
+        btn_a = findViewById(R.id.btn_press_a)
+        btn_a.isEnabled = false
+        btn_a.isClickable = false
+
+        btn_b = findViewById(R.id.btn_press_b)
+        btn_b.isEnabled = false
+        btn_b.isClickable = false
+
+        btn_c = findViewById(R.id.btn_press_c)
+        btn_c.isEnabled = false
+        btn_c.isClickable = false
+
+        btn_d = findViewById(R.id.btn_press_d)
+        btn_d.isEnabled = false
+        btn_d.isClickable = false
+
+        btn_e = findViewById(R.id.btn_press_e)
+        btn_e.isEnabled = false
+        btn_e.isClickable = false
+
+        btn_f = findViewById(R.id.btn_press_f)
+        btn_f.isEnabled = false
+        btn_f.isClickable = false
+
+        btn_g = findViewById(R.id.btn_press_g)
+        btn_g.isEnabled = false
+        btn_g.isClickable = false
+
+        btn_h = findViewById(R.id.btn_press_h)
+        btn_h.isEnabled = false
+        btn_h.isClickable = false
+
+        btn_i = findViewById(R.id.btn_press_i)
+        btn_i.isEnabled = false
+        btn_i.isClickable = false
+
+        btn_j = findViewById(R.id.btn_press_j)
+        btn_j.isEnabled = false
+        btn_j.isClickable = false
+
+        btn_k = findViewById(R.id.btn_press_k)
+        btn_k.isEnabled = false
+        btn_k.isClickable = false
+
+        btn_l = findViewById(R.id.btn_press_l)
+        btn_l.isEnabled = false
+        btn_l.isClickable = false
+
+        btn_m = findViewById(R.id.btn_press_m)
+        btn_m.isEnabled = false
+        btn_m.isClickable = false
+
+        btn_n = findViewById(R.id.btn_press_n)
+        btn_n.isEnabled = false
+        btn_n.isClickable = false
+
+        btn_o = findViewById(R.id.btn_press_o)
+        btn_o.isEnabled = false
+        btn_o.isClickable = false
+
+        btn_p = findViewById(R.id.btn_press_p)
+        btn_p.isEnabled = false
+        btn_p.isClickable = false
+
+        btn_q = findViewById(R.id.btn_press_q)
+        btn_q.isEnabled = false
+        btn_q.isClickable = false
+
+        btn_r = findViewById(R.id.btn_press_r)
+        btn_r.isEnabled = false
+        btn_r.isClickable = false
+
+        btn_s = findViewById(R.id.btn_press_s)
+        btn_s.isEnabled = false
+        btn_s.isClickable = false
+
+        btn_t = findViewById(R.id.btn_press_t)
+        btn_t.isEnabled = false
+        btn_t.isClickable = false
+
+        btn_u = findViewById(R.id.btn_press_u)
+        btn_u.isEnabled = false
+        btn_u.isClickable = false
+
+        btn_v = findViewById(R.id.btn_press_v)
+        btn_v.isEnabled = false
+        btn_v.isClickable = false
+
+        btn_w = findViewById(R.id.btn_press_w)
+        btn_w.isEnabled = false
+        btn_w.isClickable = false
+
+        btn_x = findViewById(R.id.btn_press_x)
+        btn_x.isEnabled = false
+        btn_x.isClickable = false
+
+        btn_y = findViewById(R.id.btn_press_y)
+        btn_y.isEnabled = false
+        btn_y.isClickable = false
+
+        btn_z = findViewById(R.id.btn_press_z)
+        btn_z.isEnabled = false
+        btn_z.isClickable = false
+
+    }
+
 }

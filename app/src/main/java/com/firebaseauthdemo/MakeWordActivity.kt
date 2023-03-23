@@ -11,6 +11,7 @@ package com.firebaseauthdemo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -40,6 +41,8 @@ class MakeWordActivity : AppCompatActivity() {
     // Submit and reset variables
     lateinit var submit: Button
     lateinit var reset: Button
+    // Refill tiles button
+    lateinit var redo: Button
 
 
     // All available letters for user to play - 10 random letters each instance
@@ -57,6 +60,21 @@ class MakeWordActivity : AppCompatActivity() {
 
         // Populate random 10 letters for user
         fillTiles()
+
+        // Allow user to refill tiles once
+        // 0 - refill has been used, 1 - refill is allowed
+        var refill = 1
+        if (refill == 1) {
+            redo = findViewById(R.id.btn_redo_tiles)
+            redo.setOnClickListener {
+                currentLetters.clear()
+                updateButtonView()
+                enableButtons()
+                fillTiles()
+                redo.visibility = View.INVISIBLE
+                refill = 0
+            }
+        }
 
         // Tile listeners - all tiles will add their respective letter into play and update the change on-screen
         // Upon first press of a tile, said tile will be disabled from play unless user selects the reset button
@@ -147,49 +165,7 @@ class MakeWordActivity : AppCompatActivity() {
             currentLetters.clear()
             updateButtonView()
 
-            tile1 = findViewById(R.id.btn_tile_1)
-            tile1.isEnabled = true
-            tile1.isClickable = true
-
-            tile2 = findViewById(R.id.btn_tile_2)
-            tile2.isEnabled = true
-            tile2.isClickable = true
-
-            tile3 = findViewById(R.id.btn_tile_3)
-            tile3.isEnabled = true
-            tile3.isClickable = true
-
-            tile3 = findViewById(R.id.btn_tile_3)
-            tile3.isEnabled = true
-            tile3.isClickable = true
-
-            tile4 = findViewById(R.id.btn_tile_4)
-            tile4.isEnabled = true
-            tile4.isClickable = true
-
-            tile5 = findViewById(R.id.btn_tile_5)
-            tile5.isEnabled = true
-            tile5.isClickable = true
-
-            tile6 = findViewById(R.id.btn_tile_6)
-            tile6.isEnabled = true
-            tile6.isClickable = true
-
-            tile7 = findViewById(R.id.btn_tile_7)
-            tile7.isEnabled = true
-            tile7.isClickable = true
-
-            tile8 = findViewById(R.id.btn_tile_8)
-            tile8.isEnabled = true
-            tile8.isClickable = true
-
-            tile9 = findViewById(R.id.btn_tile_9)
-            tile9.isEnabled = true
-            tile9.isClickable = true
-
-            tile10 = findViewById(R.id.btn_tile_10)
-            tile10.isEnabled = true
-            tile10.isClickable = true
+            enableButtons()
         }
 
         // Submit button functionality - validates user created word
@@ -247,6 +223,53 @@ class MakeWordActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun enableButtons() {
+        tile1 = findViewById(R.id.btn_tile_1)
+        tile1.isEnabled = true
+        tile1.isClickable = true
+
+        tile2 = findViewById(R.id.btn_tile_2)
+        tile2.isEnabled = true
+        tile2.isClickable = true
+
+        tile3 = findViewById(R.id.btn_tile_3)
+        tile3.isEnabled = true
+        tile3.isClickable = true
+
+        tile3 = findViewById(R.id.btn_tile_3)
+        tile3.isEnabled = true
+        tile3.isClickable = true
+
+        tile4 = findViewById(R.id.btn_tile_4)
+        tile4.isEnabled = true
+        tile4.isClickable = true
+
+        tile5 = findViewById(R.id.btn_tile_5)
+        tile5.isEnabled = true
+        tile5.isClickable = true
+
+        tile6 = findViewById(R.id.btn_tile_6)
+        tile6.isEnabled = true
+        tile6.isClickable = true
+
+        tile7 = findViewById(R.id.btn_tile_7)
+        tile7.isEnabled = true
+        tile7.isClickable = true
+
+        tile8 = findViewById(R.id.btn_tile_8)
+        tile8.isEnabled = true
+        tile8.isClickable = true
+
+        tile9 = findViewById(R.id.btn_tile_9)
+        tile9.isEnabled = true
+        tile9.isClickable = true
+
+        tile10 = findViewById(R.id.btn_tile_10)
+        tile10.isEnabled = true
+        tile10.isClickable = true
+    }
+
 
     // Updates the users word visually each time a letter is put into play
     private fun updateButtonView() {
