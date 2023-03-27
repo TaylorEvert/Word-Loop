@@ -63,6 +63,8 @@ class guessUserWordActivity : AppCompatActivity() {
             // Show button - send user back to round 1 with a random word
             show_next.visibility = View.VISIBLE
             show_next.setOnClickListener {
+                show_next.isClickable = false
+                show_next.isEnabled = false
                 getRandomWord()
             }
 
@@ -80,6 +82,8 @@ class guessUserWordActivity : AppCompatActivity() {
             // Show button - send user to main menu
             show_next.visibility = View.VISIBLE
             show_next.setOnClickListener {
+                show_next.isClickable = false
+                show_next.isEnabled = false
                 startActivity(Intent(this@guessUserWordActivity, MainActivity::class.java))
                 finish()
             }
@@ -276,11 +280,14 @@ class guessUserWordActivity : AppCompatActivity() {
                 finish()
 
             } else {
+                // Due to the next button being disabled and only allowing one click, if an API error occurs, send the user home with a win
                 Toast.makeText(
                     this@guessUserWordActivity,
-                    "An error has occurred",
+                    "An error has occurred, you have won",
                     Toast.LENGTH_SHORT
                 ).show()
+                startActivity(Intent(this@guessUserWordActivity, MainActivity::class.java))
+                finish()
             }
         }
     }
