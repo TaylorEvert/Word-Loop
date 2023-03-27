@@ -31,6 +31,14 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // Automatically login user and send to MainActivity
+        var auth = FirebaseAuth.getInstance();
+        if (auth.currentUser != null) {
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            finish()
+        }
+
+
         // Assign register id - set listener for moving to register activity
         login_register_button = findViewById(R.id.btn_register)
         login_register_button.setOnClickListener {
