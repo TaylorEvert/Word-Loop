@@ -88,7 +88,6 @@ class LoginActivity : AppCompatActivity() {
                                     "You are successfully logged in!",
                                     Toast.LENGTH_SHORT
                                 ).show()
-
                                 /**
                                  * Automatically sign in user
                                  * Send user to MainActivity displaying user information

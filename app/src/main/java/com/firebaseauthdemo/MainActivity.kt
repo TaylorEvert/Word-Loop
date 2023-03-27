@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         /**
          * Enable Play button -
          * Send user to guessAiWord Activity with the random word from API

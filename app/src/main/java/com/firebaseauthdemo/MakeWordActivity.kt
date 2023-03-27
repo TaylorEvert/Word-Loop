@@ -297,6 +297,10 @@ class MakeWordActivity : AppCompatActivity() {
         while (playerHand.size < 10) {
             // Grabs random letter from letters list
             var currentRandomLetter = letters.random().toString()
+            // Check playerHand, determine the count of letter trying to be added, ensure their is not more than 3 instances of a single letter
+            while (playerHand.count{it == currentRandomLetter} >= 2) {
+                currentRandomLetter = letters.random().toString()
+            }
             // Prioritizes adding a random vowel over a random non-vowel letter - making sure at least 3 vowels are in play
             if (containVowel == 2) {
                 // Reset vowel counter so other letters can be added as well
@@ -381,11 +385,11 @@ class MakeWordActivity : AppCompatActivity() {
                 // If API response is unsuccessful - show error message and return to main menu
                 Toast.makeText(
                     this@MakeWordActivity,
-                    "An error has occurred while contacting API",
+                    "An error has occurred while contacting the API",
                     Toast.LENGTH_SHORT
                 ).show()
-                startActivity(Intent(this@MakeWordActivity, MainActivity::class.java))
-                finish()
+                //startActivity(Intent(this@MakeWordActivity, MainActivity::class.java))
+                //finish()
             }
         }
     }
