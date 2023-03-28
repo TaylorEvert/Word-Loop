@@ -10,6 +10,7 @@ package com.firebaseauthdemo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -280,6 +281,7 @@ class guessUserWordActivity : AppCompatActivity() {
                 finish()
 
             } else {
+                Log.d("GuessUserWord", "getRandomWord: $response")
                 // Due to the next button being disabled and only allowing one click, if an API error occurs, send the user home with a win
                 Toast.makeText(
                     this@guessUserWordActivity,

@@ -10,6 +10,7 @@ package com.firebaseauthdemo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -135,6 +136,7 @@ class MainActivity : AppCompatActivity() {
                 finish()
 
             } else {
+                Log.d("MainActivity", "getRandomWord: $response")
                 Toast.makeText(
                     this@MainActivity,
                     "An error has occurred",

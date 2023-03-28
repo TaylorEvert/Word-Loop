@@ -11,6 +11,7 @@ package com.firebaseauthdemo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -383,6 +384,7 @@ class MakeWordActivity : AppCompatActivity() {
 
             } else {
                 // If API response is unsuccessful - show error message and return to main menu
+                Log.d("MakeWord", "getRandomWord: $response")
                 Toast.makeText(
                     this@MakeWordActivity,
                     "An error has occurred while contacting the API",
