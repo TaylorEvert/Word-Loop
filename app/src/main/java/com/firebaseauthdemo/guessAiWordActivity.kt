@@ -11,6 +11,7 @@ package com.firebaseauthdemo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -101,6 +102,37 @@ class guessAiWordActivity : AppCompatActivity() {
         // Start with next button disabled
         btn_next = findViewById(R.id.btn_next)
         btn_next.visibility = View.INVISIBLE
+
+        // Start round timer, user has to try and guess the word before the timer ends otherwise the game ends
+        val countDownTimer = object : CountDownTimer(120000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+
+                // If a win/loss has already been met, dont update title
+                if (winLoss == 1) {
+
+                    view_title = findViewById(R.id.view_guess_title)
+                    view_title.text = "CORRECT!"
+
+                } else if (winLoss == 2) {
+
+                    view_title = findViewById(R.id.view_guess_title)
+                    view_title.text = "YOU LOST!"
+
+                } else {
+
+                    val remainingTime = millisUntilFinished / 1000
+                    view_title = findViewById(R.id.view_guess_title)
+                    view_title.text = "Time remaining: $remainingTime"
+
+                }
+            }
+            // On timer finish, call endTime function to end the game if word hasnt been guessed
+            override fun onFinish() {
+                endTime(underscoreList, wordList)
+            }
+        }
+
+        countDownTimer.start()
 
         // Set listeners for letters - every letter has same functionality regarding its value
         /**
@@ -646,6 +678,43 @@ class guessAiWordActivity : AppCompatActivity() {
         view_word.text = underscoreString
         view_strike.text = "STRIKES - $strikes"
         view_incorrect.text = "GUESSES - $incorrect"
+    }
+
+    // This function is called when the round timer ends - checks if word has not been guessed, and ends the game accordingly
+    private fun endTime(underscoreList: MutableList<String>, wordList: MutableList<String>) {
+        // Revert wordList into a string - to be checked
+        var word = ""
+        for (x in wordList) {
+            word+= x
+        }
+        // Revert underscoreList into string - to be checked
+        var underscore = ""
+        for (x in underscoreList) {
+            underscore+= x
+        }
+
+        // Ensure word has not been guessed
+        if (word.trim() != underscore.trim()) {
+            Toast.makeText(
+                this@guessAiWordActivity,
+                "Times Up!",
+                Toast.LENGTH_LONG
+            ).show()
+
+            // Update winLoss value so 'next' button proceeds accordingly
+            winLoss = 2
+
+            // Update round title
+            view_title = findViewById(R.id.view_guess_title)
+            view_title.text = "TIMES UP!"
+
+            // Show next button
+            btn_next = findViewById(R.id.btn_next)
+            btn_next.visibility = View.VISIBLE
+
+        }
+
+
     }
 
     // Determines win/loss state of game - loss is at 0 strikes - win is correctly guessed letter
