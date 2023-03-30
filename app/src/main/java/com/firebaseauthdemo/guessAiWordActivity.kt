@@ -99,10 +99,6 @@ class guessAiWordActivity : AppCompatActivity() {
 
 
         // Activate buttons
-        // Start with next button disabled
-        btn_next = findViewById(R.id.btn_next)
-        btn_next.visibility = View.INVISIBLE
-
         // Start round timer, user has to try and guess the word before the timer ends otherwise the game ends
         val countDownTimer = object : CountDownTimer(120000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -646,10 +642,17 @@ class guessAiWordActivity : AppCompatActivity() {
             btn_z.visibility =View.INVISIBLE
         }
 
-        // Continue to next activity or return to MainActivity depending on win/loss - only visible in win/loss state
+        // Start with next button as "give up" button
         btn_next = findViewById(R.id.btn_next)
+        btn_next.text = "Return Home"
+        // Continue to next activity or return to MainActivity depending on win/loss - allow user to give up and return home
         btn_next.setOnClickListener {
-            
+
+            // Return home upon giving up - results in a loss
+            if (winLoss == 0) {
+                startActivity(Intent(this@guessAiWordActivity, MainActivity::class.java))
+                finish()
+            }
             // Return home upon losing
             if (winLoss == 2) {
                 startActivity(Intent(this@guessAiWordActivity, MainActivity::class.java))
@@ -710,7 +713,7 @@ class guessAiWordActivity : AppCompatActivity() {
 
             // Show next button
             btn_next = findViewById(R.id.btn_next)
-            btn_next.visibility = View.VISIBLE
+            btn_next.text = "HOME"
 
         }
 
@@ -745,7 +748,7 @@ class guessAiWordActivity : AppCompatActivity() {
             view_title.text = "YOU LOST!"
 
             btn_next = findViewById(R.id.btn_next)
-            btn_next.visibility = View.VISIBLE
+            btn_next.text = "HOME"
         }
 
         // Check if word matches underscore(correctly guessed letters)
@@ -763,7 +766,7 @@ class guessAiWordActivity : AppCompatActivity() {
             view_title.text = "CORRECT!"
 
             btn_next = findViewById(R.id.btn_next)
-            btn_next.visibility = View.VISIBLE
+            btn_next.text = "NEXT"
 
         }
 
