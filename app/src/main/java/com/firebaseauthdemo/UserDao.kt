@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
+// Define methods to access the db - Data Access Objects
 
 @Dao
 interface UserDao {

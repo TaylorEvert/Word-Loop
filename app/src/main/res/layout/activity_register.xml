@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/game_logo_register"
-        android:layout_width="407dp"
-        android:layout_height="189dp"
+        android:layout_width="404dp"
+        android:layout_height="152dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +41,7 @@
         android:id="@+id/register_screen_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:text="Registration"
         android:textAlignment="center"
@@ -48,21 +49,41 @@
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/til_register_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/game_title_register" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_register_username"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColorHint="#4E31B7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_screen_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_register_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryBackgroundMain"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Username"
+            android:textAlignment="viewStart"
+            android:textColor="#4E31B7"
+            android:textStyle="bold"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_register_email"
         android:layout_width="375dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:textColorHint="#4E31B7"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_title_register"
-        app:layout_constraintVertical_bias="0.17000002">
+        app:layout_constraintTop_toBottomOf="@+id/til_register_username">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_register_email"
@@ -80,12 +101,11 @@
         android:id="@+id/til_register_password"
         android:layout_width="375dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:textColorHint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_register_email"
-        app:layout_constraintVertical_bias="0.13">
+        app:layout_constraintTop_toBottomOf="@+id/til_register_email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_register_password"
@@ -103,6 +123,7 @@
         android:id="@+id/btn_register_user"
         android:layout_width="375dp"
         android:layout_height="60dp"
+        android:layout_marginTop="16dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
         android:fontFamily="sans-serif-medium"
@@ -115,12 +136,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_register_password"
-        app:layout_constraintVertical_bias="0.26999998" />
+        app:layout_constraintVertical_bias="0.19" />
 
     <Button
         android:id="@+id/btn_return_login"
         android:layout_width="375dp"
         android:layout_height="60dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="50dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"

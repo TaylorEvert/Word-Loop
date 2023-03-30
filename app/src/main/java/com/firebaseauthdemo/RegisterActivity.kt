@@ -19,6 +19,7 @@ class RegisterActivity : AppCompatActivity() {
 
     // Declare variables to be assigned with their id
     lateinit var regisrationButton: Button
+    lateinit var registerUsername: Button
     lateinit var registerEmailField: TextInputEditText
     lateinit var registerPasswordField: TextInputEditText
     lateinit var return_login: Button
@@ -30,6 +31,7 @@ class RegisterActivity : AppCompatActivity() {
 
         // Assign layout ID to variable declaration
         regisrationButton = findViewById(R.id.btn_register_user)
+        registerUsername = findViewById(R.id.et_register_username)
         registerEmailField = findViewById(R.id.et_register_email)
         registerPasswordField = findViewById(R.id.et_register_password)
         return_login = findViewById(R.id.btn_return_login)
@@ -70,6 +72,7 @@ class RegisterActivity : AppCompatActivity() {
                     // Declare email and password variables
                     val email: String = registerEmailField.text.toString().trim { it <= ' ' }
                     val password: String = registerPasswordField.text.toString().trim{ it <= ' '}
+                    val username: String = registerUsername.text.toString().trim(){ it <= ' '}
 
                     // Use Firebase class to get an instance of the connection, and create a user with the added information
                     // Use an onCompleteListener to determine success
@@ -79,6 +82,9 @@ class RegisterActivity : AppCompatActivity() {
 
                             // If registration is successful
                             if (task.isSuccessful) {
+
+                                // Create local user db -- add username to db
+
 
                                 // Registered User
                                 val firebaseUser: FirebaseUser = task.result!!.user!!
