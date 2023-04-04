@@ -4,14 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.launch
 
 
 
@@ -19,10 +23,12 @@ class RegisterActivity : AppCompatActivity() {
 
     // Declare variables to be assigned with their id
     lateinit var regisrationButton: Button
-    lateinit var registerUsername: Button
+    lateinit var registerUsername: TextInputEditText
     lateinit var registerEmailField: TextInputEditText
     lateinit var registerPasswordField: TextInputEditText
     lateinit var return_login: Button
+    private var userDao: UserDao? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,8 +99,12 @@ class RegisterActivity : AppCompatActivity() {
                             if (task.isSuccessful) {
 
                                 // Create local user db -- add username to db
-
-
+                                val db = Room.databaseBuilder(this, AppDatabase::class.java, "new-db").build()
+                                userDao = db.userDao()
+                                lifecycleScope.launch {
+                                    userDao?.addUser(User(1,username,0,0,null))
+                                }
+                                Log.d("RegisterActivity","new user added ($username)")
                                 // Registered User
                                 val firebaseUser: FirebaseUser = task.result!!.user!!
 

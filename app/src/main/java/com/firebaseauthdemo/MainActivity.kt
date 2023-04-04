@@ -15,9 +15,11 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.firebaseauthdemo.randomword.RandomWordInterface
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -26,6 +28,9 @@ class MainActivity : AppCompatActivity() {
 
     // Declare MainActivity Views
     lateinit var email_id: TextView
+    lateinit var victories: TextView
+    lateinit var defeats: TextView
+    lateinit var lastWord: TextView
 
     // Declare buttons
     lateinit var logout: Button
@@ -34,10 +39,24 @@ class MainActivity : AppCompatActivity() {
 
     // Declare Database Reference variable
     private lateinit var dbRef: DatabaseReference
+    private var userDao: UserDao? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val db = Room.databaseBuilder(this, AppDatabase::class.java, "new-db").build()
+        userDao = db.userDao()
+        lifecycleScope.launch(Dispatchers.IO) {
+            val username = userDao?.getUser()
+            val wins = userDao?.getVictories()
+            val losses = userDao?.getDefeats()
+            val word = userDao?.getWord()
+            email_id.text = username
+            victories.text = wins.toString()
+            defeats.text = losses.toString()
+            lastWord.text = word
+        }
 
         /**
          * Enable Play button -
@@ -65,8 +84,11 @@ class MainActivity : AppCompatActivity() {
 
         // Assign MainActivity View variables
         email_id = findViewById(R.id.text_user_email)
+        victories = findViewById(R.id.text_user_wins)
+        defeats = findViewById(R.id.text_user_loss)
+        lastWord = findViewById(R.id.text_last_word)
         // Update screen with user information
-        email_id.text = "$emailId"
+        //email_id.text = username
 
         /**
          *  Setup logout button -

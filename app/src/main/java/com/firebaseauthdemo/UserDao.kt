@@ -25,39 +25,47 @@ interface UserDao {
     /** */
     // Adds username to the table
     @Insert
-    suspend fun addUser(username: String): User
+    suspend fun addUser(users: User)
     // Gets username from table
+
     @Query("SELECT username FROM user_table")
-    suspend fun getUser(username: String): User
+    fun getUser(): String
 
 
     /** */
     // Adds victory to the table
-    @Insert
-    suspend fun addVictory(victories: Int): User
+    //@Insert
+    //suspend fun addVictory(victories: Int): User
     // Gets current victory count from table
+
+
     @Query("SELECT victories FROM user_table")
-    suspend fun getVictories(victories: Int): User
+    fun getVictories(): Int
 
 
     /** */
     // Adds defeat to the table
-    @Insert
-    suspend fun addDefeat(defeats: Int): User
+
     // Get current defeat count from table
+
+
     @Query("SELECT defeats FROM user_table")
-    suspend fun getDefeats(defeats: Int): User
+    fun getDefeats(): Int
 
     /** */
     // Adds last word to the table
-    @Insert
-    suspend fun addWord(lastWord: String): User
+    //@Insert
+    //suspend fun addWord(lastWord: String): User
     // Gets last word from table
+
+
     @Query("SELECT lastWord FROM user_table")
-    suspend fun getWord(lastWord: String): User
+    fun getWord(): String
+
+
     // Delete last word from table
-    @Delete
-    suspend fun deleteWord(lastWord: String)
+    //@Delete
+    //suspend fun deleteWord(lastWord: String)
 
 
     @Delete
