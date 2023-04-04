@@ -48,6 +48,15 @@ class RegisterActivity : AppCompatActivity() {
             // Check if email and password fields are empty
             when {
                 // Make toast if email field is empty
+                TextUtils.isEmpty(registerUsername.text.toString().trim { it <= ' ' }) -> {
+                    Toast.makeText(
+                        this@RegisterActivity,
+                        "Please enter a username",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                // Make toast if email field is empty
                 TextUtils.isEmpty(registerEmailField.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this@RegisterActivity,
