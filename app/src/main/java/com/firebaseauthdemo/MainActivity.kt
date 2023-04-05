@@ -53,8 +53,8 @@ class MainActivity : AppCompatActivity() {
             val losses = userDao?.getDefeats()
             val word = userDao?.getWord()
             email_id.text = username
-            victories.text = wins.toString()
-            defeats.text = losses.toString()
+            victories.text = "Victories = $wins"
+            defeats.text = "Losses = $losses"
             lastWord.text = word
         }
 

@@ -16,6 +16,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.firebaseauthdemo.randomword.RandomWordInterface
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
@@ -30,11 +31,15 @@ class guessUserWordActivity : AppCompatActivity() {
     lateinit var show_user_word: Button // btn_user_word
     lateinit var show_guess_word: Button // btn_guess_word
     lateinit var show_next: Button // btn_return
+    private var userDao: UserDao? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guess_user_word)
+
+        val db = Room.databaseBuilder(this, AppDatabase::class.java, "new-db").build()
+        userDao = db.userDao()
 
         // User word sent from previous activity - to be guessed by AI
         val sendWord = intent.getStringExtra("word")
@@ -74,6 +79,8 @@ class guessUserWordActivity : AppCompatActivity() {
         } else {
             // Update title
             show_title.text = "You have won!"
+
+
             // Send user toast message
             Toast.makeText(
                 this@guessUserWordActivity,
@@ -81,6 +88,7 @@ class guessUserWordActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
             // Show button - send user to main menu
+            // add win to database
             show_next.visibility = View.VISIBLE
             show_next.setOnClickListener {
                 show_next.isClickable = false
@@ -242,6 +250,9 @@ class guessUserWordActivity : AppCompatActivity() {
         // Set winloss to 2(ai lost) if ran out of lives and guessed incorrectly again
         if (strikes <= 0) {
             winLoss = 2
+            lifecycleScope.launch {
+                userDao?.addVictory()
+            }
         }
 
         return winLoss

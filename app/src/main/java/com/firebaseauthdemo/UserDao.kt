@@ -34,8 +34,8 @@ interface UserDao {
 
     /** */
     // Adds victory to the table
-    //@Insert
-    //suspend fun addVictory(victories: Int): User
+    @Query("UPDATE user_table SET victories = victories + 1")
+    suspend fun addVictory()
     // Gets current victory count from table
 
 
@@ -45,7 +45,8 @@ interface UserDao {
 
     /** */
     // Adds defeat to the table
-
+    @Query("UPDATE user_table SET defeats = defeats + 1")
+    suspend fun addDefeat()
     // Get current defeat count from table
 
 

@@ -16,6 +16,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
+import kotlinx.coroutines.launch
 
 // API URL
 const val BASE_URL = "https://api.api-ninjas.com/v1/"
@@ -24,6 +27,7 @@ const val TAG = "guessAiWordActivity"
 class guessAiWordActivity : AppCompatActivity() {
 
     // Declare activity view variables
+    private var userDao: UserDao? = null
     lateinit var view_word: Button
     lateinit var view_strike: Button
     lateinit var view_incorrect: Button
@@ -63,6 +67,9 @@ class guessAiWordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guess_ai_word)
+
+        val db = Room.databaseBuilder(this, AppDatabase::class.java, "new-db").build()
+        userDao = db.userDao()
 
         // Word sent from previous activity - Given from API
         val sendWord = intent.getStringExtra("word")
@@ -113,6 +120,7 @@ class guessAiWordActivity : AppCompatActivity() {
 
                     view_title = findViewById(R.id.view_guess_title)
                     view_title.text = "YOU LOST!"
+
 
                 } else {
 
@@ -706,6 +714,9 @@ class guessAiWordActivity : AppCompatActivity() {
 
             // Update winLoss value so 'next' button proceeds accordingly
             winLoss = 2
+            lifecycleScope.launch {
+                userDao?.addDefeat()
+            }
 
             // Update round title
             view_title = findViewById(R.id.view_guess_title)
@@ -743,6 +754,9 @@ class guessAiWordActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
             winLoss = 2
+            lifecycleScope.launch {
+                userDao?.addDefeat()
+            }
 
             view_title = findViewById(R.id.view_guess_title)
             view_title.text = "YOU LOST!"
