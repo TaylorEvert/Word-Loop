@@ -55,8 +55,8 @@ interface UserDao {
 
     /** */
     // Adds last word to the table
-    //@Insert
-    //suspend fun addWord(lastWord: String): User
+    @Query("UPDATE user_table SET lastWord = :lastWord")
+    suspend fun addWord(lastWord: String)
     // Gets last word from table
 
 

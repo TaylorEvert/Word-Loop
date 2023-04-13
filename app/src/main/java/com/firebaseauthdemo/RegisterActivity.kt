@@ -35,6 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+
         // Assign layout ID to variable declaration
         regisrationButton = findViewById(R.id.btn_register_user)
         registerUsername = findViewById(R.id.et_register_username)
@@ -97,16 +98,16 @@ class RegisterActivity : AppCompatActivity() {
 
                             // If registration is successful
                             if (task.isSuccessful) {
+                                val firebaseUser: FirebaseUser = task.result!!.user!!
 
                                 // Create local user db -- add username to db
-                                val db = Room.databaseBuilder(this, AppDatabase::class.java, "new-db").build()
+                                val db = AppDatabase.getDatabase(this,firebaseUser.uid)
                                 userDao = db.userDao()
                                 lifecycleScope.launch {
-                                    userDao?.addUser(User(1,username,0,0,null))
+                                    userDao?.addUser(User(1,username,0,0,"word"))
                                 }
                                 Log.d("RegisterActivity","new user added ($username)")
                                 // Registered User
-                                val firebaseUser: FirebaseUser = task.result!!.user!!
 
                                 // Show successful registration to user
                                 Toast.makeText(

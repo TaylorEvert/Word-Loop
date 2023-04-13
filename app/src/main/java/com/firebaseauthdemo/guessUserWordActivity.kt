@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.firebaseauthdemo.randomword.RandomWordInterface
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -38,7 +39,9 @@ class guessUserWordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guess_user_word)
 
-        val db = Room.databaseBuilder(this, AppDatabase::class.java, "new-db").build()
+        val currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
+
+        val db = AppDatabase.getDatabase(this,"$currentuser")
         userDao = db.userDao()
 
         // User word sent from previous activity - to be guessed by AI

@@ -18,6 +18,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
 // API URL
@@ -68,7 +70,10 @@ class guessAiWordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guess_ai_word)
 
-        val db = Room.databaseBuilder(this, AppDatabase::class.java, "new-db").build()
+        val currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
+
+
+        val db = AppDatabase.getDatabase(this,"$currentuser")
         userDao = db.userDao()
 
         // Word sent from previous activity - Given from API
@@ -756,6 +761,7 @@ class guessAiWordActivity : AppCompatActivity() {
             winLoss = 2
             lifecycleScope.launch {
                 userDao?.addDefeat()
+                userDao?.addWord(word)
             }
 
             view_title = findViewById(R.id.view_guess_title)

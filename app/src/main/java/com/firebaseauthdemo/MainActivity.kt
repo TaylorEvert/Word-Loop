@@ -45,17 +45,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val db = Room.databaseBuilder(this, AppDatabase::class.java, "new-db").build()
+        email_id = findViewById(R.id.text_user_email)
+        victories = findViewById(R.id.text_user_wins)
+        defeats = findViewById(R.id.text_user_loss)
+        lastWord = findViewById(R.id.text_last_word)
+
+        val currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
+
+        val db = AppDatabase.getDatabase(this,"$currentuser")
         userDao = db.userDao()
         lifecycleScope.launch(Dispatchers.IO) {
-            val username = userDao?.getUser()
-            val wins = userDao?.getVictories()
-            val losses = userDao?.getDefeats()
-            val word = userDao?.getWord()
-            email_id.text = username
-            victories.text = "Victories = $wins"
-            defeats.text = "Losses = $losses"
-            lastWord.text = word
+                val username = userDao?.getUser()
+                val wins = userDao?.getVictories()
+                val losses = userDao?.getDefeats()
+                val word = userDao?.getWord()
+                email_id.text = username
+                victories.text = "Victories = $wins"
+                defeats.text = "Losses = $losses"
+                lastWord.text = word
         }
 
         /**
@@ -83,10 +90,6 @@ class MainActivity : AppCompatActivity() {
         val emailId = intent.getStringExtra("email_id")
 
         // Assign MainActivity View variables
-        email_id = findViewById(R.id.text_user_email)
-        victories = findViewById(R.id.text_user_wins)
-        defeats = findViewById(R.id.text_user_loss)
-        lastWord = findViewById(R.id.text_last_word)
         // Update screen with user information
         //email_id.text = username
 
